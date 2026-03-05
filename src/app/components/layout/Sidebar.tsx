@@ -14,6 +14,7 @@ export function Sidebar() {
             <Link
               key={item.path}
               to={item.path}
+              state={{ fromPath: location.pathname }}
               className={`flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm transition-colors ${
                 isActive
                   ? "bg-[#E0E7FF] font-medium text-[#2563EB]"

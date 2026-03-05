@@ -25,6 +25,7 @@ interface RequestFormValues {
 }
 
 type RequestFormLocationState = {
+  fromPath?: string;
   fileName?: string;
   fileUrl?: string;
   fileType?: string;
@@ -148,7 +149,7 @@ export function RequestForm() {
       </div>
 
       <button
-        onClick={() => navigate('/new-request')}
+        onClick={() => navigate('/new-request', { state: { fromPath: state.fromPath } })}
         className="mb-6 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors flex items-center gap-2 text-sm"
       >
         <ChevronLeft className="w-4 h-4" />

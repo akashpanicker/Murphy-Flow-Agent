@@ -1,13 +1,34 @@
 import { Bell, LogOut } from "lucide-react";
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import { navItems } from "./navigation";
 import avatar from "../../../assets/Avatar.svg";
 
+const PATH_LABELS: Record<string, string> = {
+  "/": "Dashboard",
+  "/new-request": "New Procurement Request",
+  "/request-form": "New Procurement Request",
+  "/open-items": "Open Items",
+  "/users": "Users",
+  "/requester-mapping": "Requester Mapping",
+};
+
 export function Header() {
   const location = useLocation();
-  const activePageLabel =
+  const locationState = (location.state || {}) as { fromPath?: string };
+  const currentLabel =
+    PATH_LABELS[location.pathname] ??
     navItems.find((item) => item.path === location.pathname)?.label ??
     "Dashboard";
+
+  const isNewProcurementFlow =
+    location.pathname === "/new-request" || location.pathname === "/request-form";
+
+  const parentPath = isNewProcurementFlow
+    ? locationState.fromPath && locationState.fromPath !== location.pathname
+      ? locationState.fromPath
+      : "/"
+    : undefined;
+  const parentLabel = parentPath ? PATH_LABELS[parentPath] ?? "Dashboard" : undefined;
 
   return (
     <header className="h-16 border-b border-[#E5E7EB] bg-white px-6">
@@ -25,9 +46,22 @@ export function Header() {
             <p className="whitespace-nowrap text-[16px] font-semibold text-[#111827]">
               Flow Agent
             </p>
-            <p className="truncate text-[12px] text-[#6B7280]">
-              {activePageLabel}
-            </p>
+            {parentPath && parentLabel ? (
+              <div className="mt-1 flex min-w-0 items-center gap-2 text-[12px]">
+                <Link
+                  to={parentPath}
+                  className="truncate text-[#2563EB] underline underline-offset-2 hover:text-[#1D4ED8]"
+                >
+                  {parentLabel}
+                </Link>
+                <span className="text-[#6B7280]">/</span>
+                <span className="truncate text-[#374151]">{currentLabel}</span>
+              </div>
+            ) : (
+              <p className="mt-1 truncate text-[12px] text-[#6B7280]">
+                {currentLabel}
+              </p>
+            )}
           </div>
         </div>
         <div className="flex-1" />

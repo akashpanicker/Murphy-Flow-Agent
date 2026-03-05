@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { DiscussionPanel } from "../components/DiscussionPanel";
 import { StatsCards } from "../components/dashboard/StatsCards";
 import { AppLayout } from "../components/layout/AppLayout";
@@ -8,6 +8,7 @@ import { ProcurementRequest } from "../components/table/types";
 
 export function Dashboard() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedRequest, setSelectedRequest] = useState<ProcurementRequest | null>(null);
   
   const [requests, setRequests] = useState<ProcurementRequest[]>([
@@ -113,7 +114,7 @@ export function Dashboard() {
         <StatsCards />
         <ProcurementTable
           requests={requests}
-          onCreateNew={() => navigate("/new-request")}
+          onCreateNew={() => navigate("/new-request", { state: { fromPath: location.pathname } })}
           onDelete={handleDelete}
           onStatusChange={handleStatusChange}
           onOpenDiscussion={handleOpenDiscussion}
