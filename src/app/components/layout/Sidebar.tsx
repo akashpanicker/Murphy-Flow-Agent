@@ -1,8 +1,11 @@
 import { Link, useLocation } from "react-router";
-import { navItems } from "./navigation";
+import { getStoredUserRole } from "../../lib/userRole";
+import { getNavItemsByRole } from "./navigation";
 
 export function Sidebar() {
   const location = useLocation();
+  const role = getStoredUserRole();
+  const navItems = getNavItemsByRole(role);
 
   return (
     <aside className="w-[240px] flex-shrink-0 border-r border-[#E5E7EB] bg-white">

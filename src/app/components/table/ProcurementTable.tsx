@@ -6,6 +6,7 @@ import { ProcurementRequest } from "./types";
 
 interface ProcurementTableProps {
   requests: ProcurementRequest[];
+  isAdmin: boolean;
   onCreateNew: () => void;
   onDelete: (id: string) => void;
   onStatusChange: (id: string, newStatus: string) => void;
@@ -14,6 +15,7 @@ interface ProcurementTableProps {
 
 export function ProcurementTable({
   requests,
+  isAdmin,
   onCreateNew,
   onDelete,
   onStatusChange,
@@ -23,9 +25,7 @@ export function ProcurementTable({
     <section className="px-6 pb-6">
       <Card className="bg-white rounded-lg border border-[#E5E7EB] shadow-sm gap-0">
         <div className="px-6 py-4 border-b border-[#E5E7EB] flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">
-            Procurement Requests
-          </h2>
+          <h2 className="text-lg font-semibold text-gray-900">Procurement Requests</h2>
           <div className="flex items-center gap-2">
             <Button
               onClick={onCreateNew}
@@ -42,7 +42,7 @@ export function ProcurementTable({
           </div>
         ) : (
           <div className="w-full overflow-x-auto">
-            <table className="w-full min-w-[2070px] table-fixed">
+            <table className={`w-full ${isAdmin ? "min-w-[1950px]" : "min-w-[2080px]"} table-fixed`}>
               <colgroup>
                 <col className="w-[110px]" />
                 <col className="w-[110px]" />
@@ -55,8 +55,9 @@ export function ProcurementTable({
                 <col className="w-[130px]" />
                 <col className="w-[150px]" />
                 <col className="w-[130px]" />
-                <col className="w-[140px]" />
-                <col className="w-[140px]" />
+                {!isAdmin && <col className="w-[130px]" />}
+                <col className="w-[130px]" />
+                <col className="w-[160px]" />
                 <col className="w-[80px]" />
                 <col className="w-[80px]" />
               </colgroup>
@@ -95,8 +96,13 @@ export function ProcurementTable({
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
                     Triage Date
                   </th>
-                  <th className="sticky right-[300px] z-20 bg-gray-50 px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
-                    Status
+                  {!isAdmin && (
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                      Status
+                    </th>
+                  )}
+                  <th className="sticky right-[320px] z-20 bg-gray-50 px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                    Stage
                   </th>
                   <th className="sticky right-[160px] z-20 bg-gray-50 px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
                     Discussion
@@ -114,6 +120,7 @@ export function ProcurementTable({
                   <TableRow
                     key={request.id}
                     request={request}
+                    isAdmin={isAdmin}
                     onDelete={onDelete}
                     onStatusChange={onStatusChange}
                     onOpenDiscussion={onOpenDiscussion}

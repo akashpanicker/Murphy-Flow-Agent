@@ -3,6 +3,7 @@ import { ProcurementRequest } from "./types";
 
 interface TableRowProps {
   request: ProcurementRequest;
+  isAdmin: boolean;
   onDelete: (id: string) => void;
   onStatusChange: (id: string, newStatus: string) => void;
   onOpenDiscussion: (request: ProcurementRequest) => void;
@@ -10,6 +11,7 @@ interface TableRowProps {
 
 export function TableRow({
   request,
+  isAdmin,
   onDelete,
   onStatusChange,
   onOpenDiscussion,
@@ -89,7 +91,16 @@ export function TableRow({
       >
         {request.triageDate}
       </td>
-      <td className="sticky right-[300px] z-10 bg-white px-4 py-3 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+
+      {!isAdmin && (
+        <td className="px-4 py-3 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+          <span className="inline-flex rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700">
+            {request.status}
+          </span>
+        </td>
+      )}
+
+      <td className="sticky right-[320px] z-10 bg-white px-4 py-3 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
         <select
           value={request.status}
           onChange={(e) => onStatusChange(request.id, e.target.value)}
@@ -102,6 +113,7 @@ export function TableRow({
           <option value="Stage 5">Stage 5</option>
         </select>
       </td>
+
       <td className="sticky right-[160px] z-10 bg-white px-4 py-3 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
         <button
           onClick={() => onOpenDiscussion(request)}
@@ -114,11 +126,11 @@ export function TableRow({
             )}
           </div>
           <span className="text-xs text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">
-            {request.messageCount}{" "}
-            {request.messageCount === 1 ? "message" : "messages"}
+            {request.messageCount} {request.messageCount === 1 ? "message" : "messages"}
           </span>
         </button>
       </td>
+
       <td className="sticky right-[80px] z-10 bg-white px-4 py-3 text-center text-sm overflow-hidden text-ellipsis whitespace-nowrap">
         <button className="text-blue-600 hover:text-blue-800">
           <Pencil className="w-4 h-4" />

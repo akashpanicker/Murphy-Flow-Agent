@@ -27,7 +27,7 @@ type NewRequestLocationState = {
 };
 
 const PATH_LABELS: Record<string, string> = {
-  '/': 'Dashboard',
+  '/dashboard': 'Dashboard',
   '/open-items': 'Open Items',
   '/users': 'Users',
   '/requester-mapping': 'Requester Mapping',
