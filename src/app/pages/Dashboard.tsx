@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { DiscussionPanel } from "../components/DiscussionPanel";
 import { StatsCards } from "../components/dashboard/StatsCards";
@@ -6,6 +6,8 @@ import { AppLayout } from "../components/layout/AppLayout";
 import { ProcurementTable } from "../components/table/ProcurementTable";
 import { ProcurementRequest } from "../components/table/types";
 import { getStoredUserRole, getUserRoleLabel } from "../lib/userRole";
+
+const CURRENT_USER_NAME = "John Smith";
 
 export function Dashboard() {
   const navigate = useNavigate();
@@ -60,7 +62,42 @@ export function Dashboard() {
         },
       ],
     },
+    {
+      id: "2",
+      requesterId: "REQ-002",
+      requestId: "PR-1050",
+      subRequestId: "PR-1050-A",
+      title: "Office Printer Upgrade",
+      requestor: "Alicia Brown",
+      category: "IT Equipment",
+      priority: "Medium",
+      status: "Stage 2",
+      requestStartDate: "08/03/2026",
+      dueDate: "08/18/2026",
+      followUpDate: "08/11/2026",
+      triageDate: "08/04/2026",
+      messageCount: 1,
+      hasUnread: false,
+      messages: [
+        {
+          id: "m4",
+          userName: "Alicia",
+          userRole: "Requester",
+          avatar: "AB",
+          timestamp: "1 day ago",
+          content: "Sharing vendor quote for review.",
+        },
+      ],
+    },
   ]);
+
+  const visibleRequests = useMemo(() => {
+    if (isAdmin) {
+      return requests;
+    }
+
+    return requests.filter((req) => req.requestor === CURRENT_USER_NAME);
+  }, [isAdmin, requests]);
 
   const handleDelete = (id: string) => {
     setRequests(requests.filter((req) => req.id !== id));
@@ -71,6 +108,10 @@ export function Dashboard() {
   };
 
   const handleOpenDiscussion = (request: ProcurementRequest) => {
+    if (!isAdmin) {
+      return;
+    }
+
     setSelectedRequest(request);
     setRequests(requests.map((req) => (req.id === request.id ? { ...req, hasUnread: false } : req)));
   };
@@ -80,7 +121,7 @@ export function Dashboard() {
   };
 
   const handleSendMessage = (message: string) => {
-    if (!selectedRequest) {
+    if (!selectedRequest || !isAdmin) {
       return;
     }
 
@@ -113,9 +154,9 @@ export function Dashboard() {
   return (
     <>
       <AppLayout>
-        <StatsCards />
+        {isAdmin ? (<StatsCards />) : (<section className="px-6 pt-6"><h1 className="mb-6 text-2xl font-semibold text-gray-900">Welcome back,</h1></section>)}
         <ProcurementTable
-          requests={requests}
+          requests={visibleRequests}
           isAdmin={isAdmin}
           onCreateNew={() =>
             navigate("/new-request", { state: { fromPath: location.pathname } })
@@ -126,7 +167,7 @@ export function Dashboard() {
         />
       </AppLayout>
 
-      {selectedRequest && (
+      {isAdmin && selectedRequest && (
         <DiscussionPanel
           requestId={selectedRequest.requestId}
           requestTitle={selectedRequest.title}
@@ -139,3 +180,4 @@ export function Dashboard() {
     </>
   );
 }
+

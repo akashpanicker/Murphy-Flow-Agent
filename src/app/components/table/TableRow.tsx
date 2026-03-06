@@ -100,36 +100,40 @@ export function TableRow({
         </td>
       )}
 
-      <td className="sticky right-[320px] z-10 bg-white px-4 py-3 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
-        <select
-          value={request.status}
-          onChange={(e) => onStatusChange(request.id, e.target.value)}
-          className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="Stage 1">Stage 1</option>
-          <option value="Stage 2">Stage 2</option>
-          <option value="Stage 3">Stage 3</option>
-          <option value="Stage 4">Stage 4</option>
-          <option value="Stage 5">Stage 5</option>
-        </select>
-      </td>
+      {isAdmin && (
+        <td className="sticky right-[320px] z-10 bg-white px-4 py-3 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+          <select
+            value={request.status}
+            onChange={(e) => onStatusChange(request.id, e.target.value)}
+            className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="Stage 1">Stage 1</option>
+            <option value="Stage 2">Stage 2</option>
+            <option value="Stage 3">Stage 3</option>
+            <option value="Stage 4">Stage 4</option>
+            <option value="Stage 5">Stage 5</option>
+          </select>
+        </td>
+      )}
 
-      <td className="sticky right-[160px] z-10 bg-white px-4 py-3 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
-        <button
-          onClick={() => onOpenDiscussion(request)}
-          className="flex max-w-full items-center gap-2 text-gray-700 hover:text-blue-600 relative"
-        >
-          <div className="relative">
-            <MessageCircle className="w-5 h-5" />
-            {request.hasUnread && (
-              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-blue-600 rounded-full border-2 border-white" />
-            )}
-          </div>
-          <span className="text-xs text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">
-            {request.messageCount} {request.messageCount === 1 ? "message" : "messages"}
-          </span>
-        </button>
-      </td>
+      {isAdmin && (
+        <td className="sticky right-[160px] z-10 bg-white px-4 py-3 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+          <button
+            onClick={() => onOpenDiscussion(request)}
+            className="flex max-w-full items-center gap-2 text-gray-700 hover:text-blue-600 relative"
+          >
+            <div className="relative">
+              <MessageCircle className="w-5 h-5" />
+              {request.hasUnread && (
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-blue-600 rounded-full border-2 border-white" />
+              )}
+            </div>
+            <span className="text-xs text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">
+              {request.messageCount} {request.messageCount === 1 ? "message" : "messages"}
+            </span>
+          </button>
+        </td>
+      )}
 
       <td className="sticky right-[80px] z-10 bg-white px-4 py-3 text-center text-sm overflow-hidden text-ellipsis whitespace-nowrap">
         <button className="text-blue-600 hover:text-blue-800">

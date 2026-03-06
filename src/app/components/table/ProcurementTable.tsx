@@ -42,7 +42,7 @@ export function ProcurementTable({
           </div>
         ) : (
           <div className="w-full overflow-x-auto">
-            <table className={`w-full ${isAdmin ? "min-w-[1950px]" : "min-w-[2080px]"} table-fixed`}>
+            <table className={`w-full ${isAdmin ? "min-w-[1950px]" : "min-w-[1760px]"} table-fixed`}>
               <colgroup>
                 <col className="w-[110px]" />
                 <col className="w-[110px]" />
@@ -56,8 +56,8 @@ export function ProcurementTable({
                 <col className="w-[150px]" />
                 <col className="w-[130px]" />
                 {!isAdmin && <col className="w-[130px]" />}
-                <col className="w-[130px]" />
-                <col className="w-[160px]" />
+                {isAdmin && <col className="w-[130px]" />}
+                {isAdmin && <col className="w-[160px]" />}
                 <col className="w-[80px]" />
                 <col className="w-[80px]" />
               </colgroup>
@@ -101,12 +101,16 @@ export function ProcurementTable({
                       Status
                     </th>
                   )}
-                  <th className="sticky right-[320px] z-20 bg-gray-50 px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
-                    Stage
-                  </th>
-                  <th className="sticky right-[160px] z-20 bg-gray-50 px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
-                    Discussion
-                  </th>
+                  {isAdmin && (
+                    <th className="sticky right-[320px] z-20 bg-gray-50 px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                      Stage
+                    </th>
+                  )}
+                  {isAdmin && (
+                    <th className="sticky right-[160px] z-20 bg-gray-50 px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                      Discussion
+                    </th>
+                  )}
                   <th className="sticky right-[80px] z-20 bg-gray-50 px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
                     Edit
                   </th>
