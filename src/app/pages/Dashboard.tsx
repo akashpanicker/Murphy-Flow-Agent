@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { DiscussionPanel } from "../components/DiscussionPanel";
 import { StatsCards } from "../components/dashboard/StatsCards";
-import { KanbanBoard } from "../components/kanban/KanbanBoard";
 import { AppLayout } from "../components/layout/AppLayout";
 import { ProcurementTable, ViewMode } from "../components/table/ProcurementTable";
 import { ProcurementRequest } from "../components/table/types";
@@ -170,15 +169,6 @@ export function Dashboard() {
           onOpenDiscussion={handleOpenDiscussion}
         />
 
-        {/* Kanban Board — rendered outside the table card, admin only */}
-        {isAdmin && viewMode === "kanban" && (
-          <KanbanBoard
-            requests={visibleRequests}
-            onStatusChange={handleStatusChange}
-            onDelete={handleDelete}
-            onOpenDiscussion={handleOpenDiscussion}
-          />
-        )}
       </AppLayout>
 
       {isAdmin && selectedRequest && (

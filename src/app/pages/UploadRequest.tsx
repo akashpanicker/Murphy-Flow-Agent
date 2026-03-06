@@ -1,16 +1,8 @@
 import { Upload } from 'lucide-react';
 import { useRef, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { AppLayout } from '../components/layout/AppLayout';
 import { parseDocument, type ParsedFieldKey, type ParsedProcurementData } from '../../services/documentParser';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '../components/ui/breadcrumb';
 
 type UploadNavigationState = {
   fromPath?: string;
@@ -26,13 +18,6 @@ type NewRequestLocationState = {
   fromPath?: string;
 };
 
-const PATH_LABELS: Record<string, string> = {
-  '/dashboard': 'Dashboard',
-  '/open-items': 'Open Items',
-  '/users': 'Users',
-  '/requester-mapping': 'Requester Mapping',
-};
-
 export function UploadRequest() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,7 +26,6 @@ export function UploadRequest() {
     locationState.fromPath && locationState.fromPath !== '/new-request'
       ? locationState.fromPath
       : undefined;
-  const sourceLabel = sourcePath ? (PATH_LABELS[sourcePath] ?? 'Previous Page') : undefined;
   const [dragActive, setDragActive] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -119,23 +103,6 @@ export function UploadRequest() {
 
   return (
     <AppLayout>
-      <Breadcrumb className="mb-4">
-        <BreadcrumbList>
-          {sourcePath && sourceLabel && (
-            <>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to={sourcePath}>{sourceLabel}</Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-            </>
-          )}
-          <BreadcrumbItem>
-            <BreadcrumbPage>New Procurement Request</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
       <div className="flex items-center gap-3 mb-6">
         <Upload className="w-6 h-6 text-blue-600" />
         <h1 className="text-3xl font-semibold text-gray-900">New Procurement Request</h1>

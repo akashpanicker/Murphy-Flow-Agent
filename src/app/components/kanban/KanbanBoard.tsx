@@ -33,9 +33,9 @@ export function KanbanBoard({ requests, onStatusChange, onDelete, onOpenDiscussi
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="px-6 pb-6">
+      <div className="px-6 pt-6 pb-6">
         <div className="overflow-x-auto">
-          <div className="flex gap-4 min-w-max pb-2">
+          <div className="grid min-w-full grid-flow-col auto-cols-[minmax(240px,1fr)] gap-4 pb-2">
             {KANBAN_STAGES.map((stage) => (
               <KanbanColumn
                 key={stage}

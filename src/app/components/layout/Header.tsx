@@ -54,7 +54,7 @@ export function Header() {
           </div>
           <div className="flex min-w-0 flex-col leading-normal">
             <p className="whitespace-nowrap text-base font-semibold text-[#111827]">Flow Agent</p>
-            {parentPath && parentLabel ? (
+            {parentPath && parentLabel && !isNewProcurementFlow ? (
               <div className="mt-0 flex min-w-0 items-center gap-2 text-xs">
                 <Link
                   to={parentPath}

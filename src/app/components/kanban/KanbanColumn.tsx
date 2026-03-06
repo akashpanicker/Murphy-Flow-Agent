@@ -43,7 +43,7 @@ export function KanbanColumn({ stage, requests, onDrop, onDelete, onOpenDiscussi
     <div
       ref={dropRef as unknown as React.Ref<HTMLDivElement>}
       className={`
-        flex flex-col rounded-xl border min-w-[280px] w-[280px]
+        flex h-full flex-col rounded-xl border
         transition-all duration-200
         ${colors.bg} ${colors.border}
         ${isOver && canDrop ? "ring-2 ring-blue-400 ring-offset-2 border-blue-300 scale-[1.01]" : ""}

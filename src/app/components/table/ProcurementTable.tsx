@@ -1,4 +1,5 @@
 import { Columns3, Plus, Table2 } from "lucide-react";
+import { KanbanBoard } from "../kanban/KanbanBoard";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
 import { TableRow } from "./TableRow";
@@ -30,7 +31,7 @@ export function ProcurementTable({
   const isKanbanView = isAdmin && viewMode === "kanban";
 
   return (
-    <section className="px-6 pb-6">
+    <section>
       <Card className="bg-white rounded-lg border border-[#E5E7EB] shadow-sm gap-0">
         <div className="px-6 py-4 border-b border-[#E5E7EB] flex items-center justify-between">
           <h2 className="text-2xl font-semibold text-gray-900">Procurement Requests</h2>
@@ -78,8 +79,14 @@ export function ProcurementTable({
           </div>
         </div>
 
-        {/* Hide table body when kanban is active */}
-        {!isKanbanView && (
+        {isKanbanView ? (
+          <KanbanBoard
+            requests={requests}
+            onStatusChange={onStatusChange}
+            onDelete={onDelete}
+            onOpenDiscussion={onOpenDiscussion}
+          />
+        ) : (
           <>
             {requests.length === 0 ? (
               <div className="p-12 flex items-center justify-center">
