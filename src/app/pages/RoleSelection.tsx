@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { setStoredUserRole, type UserRole } from "../lib/userRole";
+import murphyLogo from "../../assets/Murphy.svg";
 
 export function RoleSelection() {
   const navigate = useNavigate();
@@ -13,8 +14,7 @@ export function RoleSelection() {
     <div className="flex min-h-screen items-center justify-center bg-[#F6F8FB] px-4">
       <div className="w-full max-w-xl rounded-xl border border-[#E5E7EB] bg-white p-10 shadow-sm">
         <div className="text-center">
-          <p className="text-sm font-black tracking-[0.1em] text-[#003A77]">MURPHY</p>
-          <p className="text-xs font-semibold tracking-[0.24em] text-[#1F2937]">FLOWAGENT</p>
+          <img src={murphyLogo} alt="Murphy logo" className="mx-auto h-10 w-auto" />
         </div>
         <h1 className="mt-8 text-center text-3xl font-semibold text-[#111827]">
           Select User Role

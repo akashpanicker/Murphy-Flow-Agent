@@ -1,6 +1,7 @@
 import { Bell, LogOut } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router";
 import avatar from "../../../assets/Avatar.svg";
+import murphyLogo from "../../../assets/Murphy.svg";
 import {
   getStoredUserRole,
   getUserRoleLabel,
@@ -49,10 +50,7 @@ export function Header() {
       <div className="flex h-full items-center justify-between">
         <div className="flex min-w-0 items-center gap-3">
           <div className="min-w-[108px] leading-normal">
-            <p className="text-sm font-black tracking-[0.1em] text-[#003A77]">MURPHY</p>
-            <p className="text-xs font-semibold tracking-[0.24em] text-[#1F2937]">
-              OIL CORPORATION
-            </p>
+            <img src={murphyLogo} alt="Murphy logo" className="h-8 w-auto" />
           </div>
           <div className="flex min-w-0 flex-col leading-normal">
             <p className="whitespace-nowrap text-base font-semibold text-[#111827]">Flow Agent</p>

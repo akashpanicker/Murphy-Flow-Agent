@@ -1,5 +1,6 @@
 import { LayoutGrid, CircleAlert, Upload, Users, Link2, LogOut, Bell, CircleUserRound } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
+import murphyLogo from '../../assets/Murphy.svg';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -51,8 +52,7 @@ export function Layout({ children }: LayoutProps) {
           <div className="flex h-full items-center justify-between gap-4">
             <div className="flex min-w-0 items-center gap-5">
               <div className="min-w-[120px] leading-normal">
-                <p className="text-sm font-black tracking-[0.12em] text-[#003A77]">MURPHY</p>
-                <p className="text-xs font-semibold tracking-[0.24em] text-[#1F2937]">OIL CORPORATION</p>
+                <img src={murphyLogo} alt="Murphy logo" className="h-8 w-auto" />
               </div>
               <div className="min-w-0">
                 <p className="whitespace-nowrap text-lg leading-normal font-semibold text-[#374151]">Flow Agent</p>
