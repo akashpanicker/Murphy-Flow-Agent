@@ -33,7 +33,7 @@ export function ProcurementTable({
     <section className="px-6 pb-6">
       <Card className="bg-white rounded-lg border border-[#E5E7EB] shadow-sm gap-0">
         <div className="px-6 py-4 border-b border-[#E5E7EB] flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">Procurement Requests</h2>
+          <h2 className="text-2xl font-semibold text-gray-900">Procurement Requests</h2>
           <div className="flex items-center gap-3">
             {/* Table / Kanban toggle — admin only */}
             {isAdmin && onViewModeChange && (
@@ -41,7 +41,7 @@ export function ProcurementTable({
                 <button
                   onClick={() => onViewModeChange("table")}
                   className={`
-                    flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium
+                    flex h-9 items-center gap-1.5 px-3 rounded-md text-xs font-medium
                     transition-all duration-200
                     ${viewMode === "table"
                       ? "bg-white text-gray-900 shadow-sm border border-gray-200"
@@ -55,7 +55,7 @@ export function ProcurementTable({
                 <button
                   onClick={() => onViewModeChange("kanban")}
                   className={`
-                    flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium
+                    flex h-9 items-center gap-1.5 px-3 rounded-md text-xs font-medium
                     transition-all duration-200
                     ${viewMode === "kanban"
                       ? "bg-white text-gray-900 shadow-sm border border-gray-200"

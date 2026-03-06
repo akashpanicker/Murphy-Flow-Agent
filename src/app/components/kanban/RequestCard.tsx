@@ -88,14 +88,14 @@ export function RequestCard({ request, onDelete, onOpenDiscussion }: RequestCard
             >
               <button
                 onClick={handleEdit}
-                className="w-full flex items-center gap-2.5 px-3 py-2 text-[12px] text-gray-700 hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center gap-2.5 px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 <Pencil className="w-3.5 h-3.5 text-gray-400" />
                 Edit
               </button>
               <button
                 onClick={handleViewDiscussion}
-                className="w-full flex items-center gap-2.5 px-3 py-2 text-[12px] text-gray-700 hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center gap-2.5 px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 <MessageCircle className="w-3.5 h-3.5 text-gray-400" />
                 View Discussion
@@ -103,7 +103,7 @@ export function RequestCard({ request, onDelete, onOpenDiscussion }: RequestCard
               <div className="my-1 border-t border-gray-100" />
               <button
                 onClick={handleDelete}
-                className="w-full flex items-center gap-2.5 px-3 py-2 text-[12px] text-red-600 hover:bg-red-50 transition-colors"
+                className="w-full flex items-center gap-2.5 px-3 py-2 text-xs text-red-600 hover:bg-red-50 transition-colors"
               >
                 <Trash2 className="w-3.5 h-3.5 text-red-400" />
                 Delete
@@ -115,32 +115,32 @@ export function RequestCard({ request, onDelete, onOpenDiscussion }: RequestCard
 
       {/* Request ID */}
       <div className="flex items-center gap-2 mb-2">
-        <span className="text-[12px] font-mono font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
+        <span className="text-xs font-mono font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
           {request.requestId}
         </span>
       </div>
 
       {/* Title */}
-      <h4 className="text-sm font-semibold text-gray-900 mb-2 leading-snug line-clamp-2">
+      <h4 className="text-sm font-semibold text-gray-900 mb-2 leading-normal line-clamp-2">
         {request.title}
       </h4>
 
       {/* Requestor */}
       <div className="flex items-center gap-2 mb-3">
-        <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center text-[10px] font-semibold text-gray-600">
+        <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center text-xs font-semibold text-gray-600">
           {request.requestor
             .split(" ")
             .map((n) => n[0])
             .join("")}
         </div>
-        <span className="text-[12px] text-gray-500">{request.requestor}</span>
+        <span className="text-xs text-gray-500">{request.requestor}</span>
       </div>
 
       {/* Priority badge + Due date */}
       <div className="flex items-center justify-between">
         <span
           className={`
-            inline-flex items-center gap-1.5 px-2 py-0.5 text-[12px] font-medium rounded-full border
+            inline-flex items-center gap-1.5 px-2 py-0.5 text-xs font-medium rounded-full border
             ${priorityStyles[request.priority] || "bg-gray-100 text-gray-600 border-gray-200"}
           `}
         >
@@ -151,7 +151,7 @@ export function RequestCard({ request, onDelete, onOpenDiscussion }: RequestCard
         </span>
 
         {/* Due date */}
-        <span className="text-[12px] text-gray-400">Due {request.dueDate}</span>
+        <span className="text-xs text-gray-400">Due {request.dueDate}</span>
       </div>
     </div>
   );

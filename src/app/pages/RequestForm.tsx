@@ -128,7 +128,7 @@ export function RequestForm() {
     <div className="flex items-center justify-between gap-2">
       <Label htmlFor={htmlFor} className="text-sm text-gray-700">{text}</Label>
       {autoFilledFieldSet.has(field) && (
-        <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+        <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
           Extracted from document
         </span>
       )}
@@ -140,7 +140,7 @@ export function RequestForm() {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <Upload className="w-6 h-6 text-blue-600" />
-          <h1 className="text-2xl font-semibold text-gray-900">New Procurement Request</h1>
+          <h1 className="text-3xl font-semibold text-gray-900">New Procurement Request</h1>
         </div>
         <button className="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
           <Send className="w-4 h-4" />
@@ -250,7 +250,7 @@ export function RequestForm() {
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-gray-800">Line Items</span>
                       {autoFilledFieldSet.has('lineItems') && (
-                        <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                           Extracted from document
                         </span>
                       )}

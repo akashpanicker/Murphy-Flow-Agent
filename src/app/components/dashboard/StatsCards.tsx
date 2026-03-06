@@ -56,7 +56,7 @@ const metrics = [
 export function StatsCards() {
   return (
     <section className="px-6 pt-6">
-      <h1 className="text-2xl font-semibold text-gray-900 mb-6">Welcome back,</h1>
+      <h1 className="text-3xl font-semibold text-gray-900 mb-6">Welcome back,</h1>
       <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
         {metrics.map((metric) => (
           <StatCard key={metric.label} {...metric} />

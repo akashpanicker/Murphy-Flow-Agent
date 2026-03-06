@@ -65,7 +65,7 @@ export default function App() {
             <RequireRole>
               <AppLayout>
                 <div className="p-6">
-                  <h1 className="text-2xl font-semibold">My Requests</h1>
+                  <h1 className="text-3xl font-semibold">My Requests</h1>
                 </div>
               </AppLayout>
             </RequireRole>
@@ -78,7 +78,7 @@ export default function App() {
               <RequireAdmin>
                 <AppLayout>
                   <div className="p-6">
-                    <h1 className="text-2xl font-semibold">Open Items</h1>
+                    <h1 className="text-3xl font-semibold">Open Items</h1>
                   </div>
                 </AppLayout>
               </RequireAdmin>
@@ -92,7 +92,7 @@ export default function App() {
               <RequireAdmin>
                 <AppLayout>
                   <div className="p-6">
-                    <h1 className="text-2xl font-semibold">Users</h1>
+                    <h1 className="text-3xl font-semibold">Users</h1>
                   </div>
                 </AppLayout>
               </RequireAdmin>
@@ -106,7 +106,7 @@ export default function App() {
               <RequireAdmin>
                 <AppLayout>
                   <div className="p-6">
-                    <h1 className="text-2xl font-semibold">Requester Mapping</h1>
+                    <h1 className="text-3xl font-semibold">Requester Mapping</h1>
                   </div>
                 </AppLayout>
               </RequireAdmin>

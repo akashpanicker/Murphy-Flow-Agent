@@ -48,16 +48,16 @@ export function Header() {
     <header className="h-16 border-b border-[#E5E7EB] bg-white px-6">
       <div className="flex h-full items-center justify-between">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="min-w-[108px] leading-none">
-            <p className="text-[13px] font-black tracking-[0.1em] text-[#003A77]">MURPHY</p>
-            <p className="text-[7px] font-semibold tracking-[0.24em] text-[#1F2937]">
+          <div className="min-w-[108px] leading-normal">
+            <p className="text-sm font-black tracking-[0.1em] text-[#003A77]">MURPHY</p>
+            <p className="text-xs font-semibold tracking-[0.24em] text-[#1F2937]">
               OIL CORPORATION
             </p>
           </div>
-          <div className="flex min-w-0 flex-col leading-[1.2]">
-            <p className="whitespace-nowrap text-[16px] font-semibold text-[#111827]">Flow Agent</p>
+          <div className="flex min-w-0 flex-col leading-normal">
+            <p className="whitespace-nowrap text-base font-semibold text-[#111827]">Flow Agent</p>
             {parentPath && parentLabel ? (
-              <div className="mt-1 flex min-w-0 items-center gap-2 text-[12px]">
+              <div className="mt-0 flex min-w-0 items-center gap-2 text-xs">
                 <Link
                   to={parentPath}
                   className="truncate text-[#2563EB] underline underline-offset-2 hover:text-[#1D4ED8]"
@@ -68,7 +68,7 @@ export function Header() {
                 <span className="truncate text-[#374151]">{currentLabel}</span>
               </div>
             ) : (
-              <p className="mt-1 truncate text-[12px] text-[#6B7280]">{currentLabel}</p>
+              <p className="mt-0 truncate text-xs text-[#6B7280]">{currentLabel}</p>
             )}
           </div>
         </div>
@@ -90,9 +90,9 @@ export function Header() {
           <div>
             <img src={avatar} alt="User avatar" className="h-8 w-8" />
           </div>
-          <div className="flex flex-col leading-tight">
-            <span className="text-[14px] font-semibold text-[#4B5563]">John Smith</span>
-            <span className="text-[12px] text-[#6B7280]">{getUserRoleLabel(role)}</span>
+          <div className="flex flex-col leading-normal">
+            <span className="text-sm font-semibold text-[#4B5563]">John Smith</span>
+            <span className="text-xs text-[#6B7280]">{getUserRoleLabel(role)}</span>
           </div>
         </div>
       </div>

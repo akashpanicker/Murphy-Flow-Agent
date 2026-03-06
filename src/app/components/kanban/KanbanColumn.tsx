@@ -54,9 +54,9 @@ export function KanbanColumn({ stage, requests, onDrop, onDelete, onOpenDiscussi
       <div className="px-4 py-3 border-b border-inherit flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className={`w-2.5 h-2.5 rounded-full ${colors.dot}`} />
-          <h3 className={`text-[13px] font-semibold ${colors.header}`}>{stage}</h3>
+          <h3 className={`text-sm font-semibold ${colors.header}`}>{stage}</h3>
         </div>
-        <span className="text-[12px] font-medium text-gray-400 bg-white/80 rounded-full px-2 py-0.5 border border-gray-200">
+        <span className="text-xs font-medium text-gray-400 bg-white/80 rounded-full px-2 py-0.5 border border-gray-200">
           {requests.length}
         </span>
       </div>
@@ -71,7 +71,7 @@ export function KanbanColumn({ stage, requests, onDrop, onDelete, onOpenDiscussi
               transition-colors duration-200
             `}
           >
-            <p className="text-[12px] text-gray-400 italic">
+            <p className="text-xs text-gray-400 italic">
               {isOver && canDrop ? "Drop here" : "No requests"}
             </p>
           </div>
@@ -84,7 +84,7 @@ export function KanbanColumn({ stage, requests, onDrop, onDelete, onOpenDiscussi
         {/* Drop indicator when hovering over non-empty column */}
         {requests.length > 0 && isOver && canDrop && (
           <div className="flex items-center justify-center py-3 rounded-lg border-2 border-dashed border-blue-300 bg-blue-50/80 transition-colors duration-200">
-            <p className="text-[12px] text-blue-400 font-medium">Drop here</p>
+            <p className="text-xs text-blue-400 font-medium">Drop here</p>
           </div>
         )}
       </div>

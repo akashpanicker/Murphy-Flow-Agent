@@ -50,13 +50,13 @@ export function Layout({ children }: LayoutProps) {
         <header className="h-16 border-b border-[#D1D5DB] bg-[#E5E7EB] px-6">
           <div className="flex h-full items-center justify-between gap-4">
             <div className="flex min-w-0 items-center gap-5">
-              <div className="min-w-[120px] leading-none">
-                <p className="text-[14px] font-black tracking-[0.12em] text-[#003A77]">MURPHY</p>
-                <p className="text-[7px] font-semibold tracking-[0.24em] text-[#1F2937]">OIL CORPORATION</p>
+              <div className="min-w-[120px] leading-normal">
+                <p className="text-sm font-black tracking-[0.12em] text-[#003A77]">MURPHY</p>
+                <p className="text-xs font-semibold tracking-[0.24em] text-[#1F2937]">OIL CORPORATION</p>
               </div>
               <div className="min-w-0">
-                <p className="whitespace-nowrap text-[18px] leading-tight font-semibold text-[#374151]">Flow Agent</p>
-                <p className="truncate text-[15px] leading-tight text-[#374151]">{activePageLabel}</p>
+                <p className="whitespace-nowrap text-lg leading-normal font-semibold text-[#374151]">Flow Agent</p>
+                <p className="truncate text-base leading-normal text-[#374151]">{activePageLabel}</p>
               </div>
             </div>
             <div className="flex items-center gap-5 text-[#4B5563]">
@@ -73,7 +73,7 @@ export function Layout({ children }: LayoutProps) {
                 <CircleUserRound className="h-8 w-8" />
                 <span className="absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full bg-[#16A34A] ring-2 ring-[#E5E7EB]" />
               </div>
-              <span className="text-[14px] font-semibold text-[#4B5563]">John Smith</span>
+              <span className="text-sm font-semibold text-[#4B5563]">John Smith</span>
             </div>
           </div>
         </header>

@@ -156,7 +156,7 @@ export function Dashboard() {
   return (
     <>
       <AppLayout>
-        {isAdmin ? (<StatsCards />) : (<section className="px-6 pt-6"><h1 className="mb-6 text-2xl font-semibold text-gray-900">Welcome back,</h1></section>)}
+        {isAdmin ? (<StatsCards />) : (<section className="px-6 pt-6"><h1 className="mb-6 text-3xl font-semibold text-gray-900">Welcome back,</h1></section>)}
         <ProcurementTable
           requests={visibleRequests}
           isAdmin={isAdmin}

@@ -138,7 +138,7 @@ export function UploadRequest() {
       </Breadcrumb>
       <div className="flex items-center gap-3 mb-6">
         <Upload className="w-6 h-6 text-blue-600" />
-        <h1 className="text-2xl font-semibold text-gray-900">New Procurement Request</h1>
+        <h1 className="text-3xl font-semibold text-gray-900">New Procurement Request</h1>
       </div>
 
       <div className="bg-white rounded-lg border border-[#E5E7EB] shadow-sm p-8">
