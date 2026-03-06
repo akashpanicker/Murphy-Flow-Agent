@@ -2,8 +2,9 @@ import { useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { DiscussionPanel } from "../components/DiscussionPanel";
 import { StatsCards } from "../components/dashboard/StatsCards";
+import { KanbanBoard } from "../components/kanban/KanbanBoard";
 import { AppLayout } from "../components/layout/AppLayout";
-import { ProcurementTable } from "../components/table/ProcurementTable";
+import { ProcurementTable, ViewMode } from "../components/table/ProcurementTable";
 import { ProcurementRequest } from "../components/table/types";
 import { getStoredUserRole, getUserRoleLabel } from "../lib/userRole";
 
@@ -15,6 +16,7 @@ export function Dashboard() {
   const role = getStoredUserRole();
   const isAdmin = role === "admin";
   const [selectedRequest, setSelectedRequest] = useState<ProcurementRequest | null>(null);
+  const [viewMode, setViewMode] = useState<ViewMode>("table");
 
   const [requests, setRequests] = useState<ProcurementRequest[]>([
     {
@@ -26,7 +28,7 @@ export function Dashboard() {
       requestor: "John Smith",
       category: "Category 1",
       priority: "High",
-      status: "Stage 1",
+      status: "New",
       requestStartDate: "08/01/2026",
       dueDate: "08/14/2026",
       followUpDate: "08/10/2026",
@@ -71,7 +73,7 @@ export function Dashboard() {
       requestor: "Alicia Brown",
       category: "IT Equipment",
       priority: "Medium",
-      status: "Stage 2",
+      status: "Under Review",
       requestStartDate: "08/03/2026",
       dueDate: "08/18/2026",
       followUpDate: "08/11/2026",
@@ -158,6 +160,8 @@ export function Dashboard() {
         <ProcurementTable
           requests={visibleRequests}
           isAdmin={isAdmin}
+          viewMode={viewMode}
+          onViewModeChange={isAdmin ? setViewMode : undefined}
           onCreateNew={() =>
             navigate("/new-request", { state: { fromPath: location.pathname } })
           }
@@ -165,6 +169,16 @@ export function Dashboard() {
           onStatusChange={handleStatusChange}
           onOpenDiscussion={handleOpenDiscussion}
         />
+
+        {/* Kanban Board — rendered outside the table card, admin only */}
+        {isAdmin && viewMode === "kanban" && (
+          <KanbanBoard
+            requests={visibleRequests}
+            onStatusChange={handleStatusChange}
+            onDelete={handleDelete}
+            onOpenDiscussion={handleOpenDiscussion}
+          />
+        )}
       </AppLayout>
 
       {isAdmin && selectedRequest && (
@@ -180,4 +194,5 @@ export function Dashboard() {
     </>
   );
 }
+
 

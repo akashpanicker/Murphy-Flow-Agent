@@ -107,11 +107,11 @@ export function TableRow({
             onChange={(e) => onStatusChange(request.id, e.target.value)}
             className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="Stage 1">Stage 1</option>
-            <option value="Stage 2">Stage 2</option>
-            <option value="Stage 3">Stage 3</option>
-            <option value="Stage 4">Stage 4</option>
-            <option value="Stage 5">Stage 5</option>
+            <option value="New">New</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Cost Review">Cost Review</option>
+            <option value="Approval">Approval</option>
+            <option value="Completed">Completed</option>
           </select>
         </td>
       )}
